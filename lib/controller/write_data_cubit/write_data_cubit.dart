@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:vocabulary_app/controller/write_data_cubit/wrtie_data_cubit_state.dart';
+import 'package:vocabulary_app/core/constants/app_colors.dart';
 import 'package:vocabulary_app/core/constants/app_string.dart';
 import 'package:vocabulary_app/core/constants/hive_constants.dart';
 import 'package:vocabulary_app/model/word_model.dart';
@@ -8,12 +9,18 @@ import 'package:vocabulary_app/model/word_model.dart';
 class WriteDataCubit extends Cubit<WriteDataCubitState> {
   WriteDataCubit() : super(WriteDataCubitInitiallyState());
 
-  static get(context) => BlocProvider.of<WriteDataCubit>(context);
+  static WriteDataCubit get(context) =>
+      BlocProvider.of<WriteDataCubit>(context);
   final Box _box = Hive.box(HiveConstants.boxWords);
 
   String word = "";
   bool isArabic = true;
-  int colorCode = 0xFF00FF00;
+  int colorCode = AppColors.color1.toARGB32();
+
+  void changeColorCode(int colorCode) {
+    this.colorCode = colorCode;
+    emit(WriteDataCubitInitiallyState());
+  }
 
   void addWord() {
     emit(WriteDataCubitLoadingState());

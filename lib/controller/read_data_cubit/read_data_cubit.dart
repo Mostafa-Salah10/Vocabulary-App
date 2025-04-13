@@ -29,7 +29,7 @@ class ReadDataCubit extends Cubit<ReadDataCubitStates> {
       _filterWordsAccordingToSort(wordsList);
       emit(ReadDataCubitStatesSuccess(words: wordsList));
     } catch (e) {
-      emit(ReadDataCubitStatesFailure(errMsg: AppString.errorMsgWrite));
+      emit(ReadDataCubitStatesFailure(errMsg: AppString.errorMsgRead));
     }
   }
 
