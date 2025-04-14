@@ -10,7 +10,7 @@ class ReadDataCubit extends Cubit<ReadDataCubitStates> {
   ReadDataCubit() : super(ReadDataCubitStatesInitially());
 
   //to access this class from any place
-  static get(context) => BlocProvider.of<ReadDataCubit>(context);
+  static ReadDataCubit get(context) => BlocProvider.of<ReadDataCubit>(context);
 
   final Box _box = Hive.box(HiveConstants.boxWords);
   LanguageType languageType = LanguageType.allWords;

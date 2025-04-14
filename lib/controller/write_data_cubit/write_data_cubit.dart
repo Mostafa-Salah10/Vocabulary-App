@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:vocabulary_app/controller/write_data_cubit/wrtie_data_cubit_state.dart';
@@ -12,6 +13,7 @@ class WriteDataCubit extends Cubit<WriteDataCubitState> {
   static WriteDataCubit get(context) =>
       BlocProvider.of<WriteDataCubit>(context);
   final Box _box = Hive.box(HiveConstants.boxWords);
+  final GlobalKey<FormState> formKey = GlobalKey();
 
   String word = "";
   bool isArabic = true;
@@ -19,6 +21,11 @@ class WriteDataCubit extends Cubit<WriteDataCubitState> {
 
   void changeColorCode(int colorCode) {
     this.colorCode = colorCode;
+    emit(WriteDataCubitInitiallyState());
+  }
+
+  void toggleLang() {
+    isArabic = !isArabic;
     emit(WriteDataCubitInitiallyState());
   }
 

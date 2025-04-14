@@ -12,7 +12,10 @@ abstract class AppTheme {
       elevation: 0,
       systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.black),
     ),
-    textTheme: TextTheme(headlineMedium: AppTextStyles.cairo20Bold),
+    textTheme: TextTheme(
+      headlineMedium: AppTextStyles.cairo25Bold,
+      headlineSmall: AppTextStyles.cairo18Bold,
+    ),
     iconTheme: IconThemeData(color: AppColors.white, size: 30),
   );
 }
